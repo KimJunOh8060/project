@@ -1,7 +1,7 @@
 # project
 oss개발 2024-1
 
-markdown languge
+markdown language
 ## heading 2
 ### heading 3
 
