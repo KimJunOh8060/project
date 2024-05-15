@@ -1,0 +1,24 @@
+#this is simple module of calcuration on python
+def add(a,b):
+    res=a+b
+    return res
+def sub(a,b):
+    res=a-b
+    return res
+def mul(a,b):
+    res=a*b
+    return res
+def div(a,b):
+    res=a/b
+    return res
+
+if __name__=='__main__':   #this part is confirmation when you inspect the module in person
+    print(add(3,5))
+    print(sub(3, 5))
+    print(mul(3, 5))
+    print(div(3, 5))
+
+#and then how to usage?
+#you should make your own python file that paste this code
+#and name this code
+#you can import the file like "from (file name) import *"
