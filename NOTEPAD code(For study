@@ -21,7 +21,7 @@ text_editor.pack(expand=True, fill="both") #pack 매서드를 활용하여 확�
 menu_bar = tk.Menu(root)#메뉴 클라스를 사용하여 빈메뉴를 생성한다
 file_menu = tk.Menu(menu_bar, tearoff=0)#메뉴 클라스를 이용하여 빈메뉴를 생성한것에 하위 메뉴를 만든다 이는 meun_bar에 속하며 tearoff=0을 통하여 때어내기를 비활성화한다
 file_menu.add_command(label="Save", command=save_file)#메뉴에 "Save" 라벨을 가진 메뉴 항목을 추가한다 사용자가 이 항목을 선택하면 save_file 함수가 호출된다#---------------------------------------------------------
-menu_bar.add_cascade(label="File", menu=file_menu)#File이라는 메뉴를 생성한다
+menu_bar.add_cascade(label="File", menu=file_menu)#File이라는 메뉴를 생성한다 (여기서 file_menu는 하위 폴더가 된다.)
 
 root.config(menu=menu_bar) #menu_bar에 추가한 모든 메뉴와 메뉴 항목이 root 윈도우의 메뉴로 표시된다
 
