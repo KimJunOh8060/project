@@ -1,0 +1,28 @@
+#this is purpose of study
+#description of Notepad code
+
+
+import tkinter as tk #Gui를 위한 윈도우창 생성 모듈
+from tkinter import filedialog #변수만을 사용해서 편하게 모듈 호출
+
+def save_file():#---------------------------------------------------------
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")]) #저장할 경로 정하기 +묻기
+    if file_path:
+        with open(file_path, "w") as file: #해당파일을 "w"를 통하여 쓰기모드로 진행 (with as 로 메모리 누수 방지)
+            file.write(text_editor.get("1.0", tk.END))#1.0은 텍스트의 0번째줄부터 ,tk,END는 텍스트의 끝까지의 범위고 입력한 텍스트를 모두 가져온다
+        root.title(f"Notepad - {file_path}")#파일을 성공적으로 저장했을때 상단에 경로를 표시한다
+
+root = tk.Tk() #빈 윈도우 창 생성
+root.title("Notepad") #윈도우 창의 이름을 Notepad라고 이름을 짓는다
+
+text_editor = tk.Text(root, wrap="word") #tk.Text 텍스트 입력을 위한 위젯을 생성하고 wrap="word"이것을 통하여 단어단위로 줄바꿈을 허용한다
+text_editor.pack(expand=True, fill="both") #pack 매서드를 활용하여 확장한거에 맞게 위젯이 확장하도록 한다
+
+menu_bar = tk.Menu(root)#메뉴 클라스를 사용하여 빈메뉴를 생성한다
+file_menu = tk.Menu(menu_bar, tearoff=0)#메뉴 클라스를 이용하여 빈메뉴를 생성한것에 하위 메뉴를 만든다 이는 meun_bar에 속하며 tearoff=0을 통하여 때어내기를 비활성화한다
+file_menu.add_command(label="Save", command=save_file)#메뉴에 "Save" 라벨을 가진 메뉴 항목을 추가한다 사용자가 이 항목을 선택하면 save_file 함수가 호출된다#---------------------------------------------------------
+menu_bar.add_cascade(label="File", menu=file_menu)#File이라는 메뉴를 생성한다
+
+root.config(menu=menu_bar) #menu_bar에 추가한 모든 메뉴와 메뉴 항목이 root 윈도우의 메뉴로 표시된다
+
+root.mainloop() #윈도우 창을 윈도우가 종료될 때 까지 실행시킵니다.
