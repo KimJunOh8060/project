@@ -1,7 +1,7 @@
 #https://www.acmicpc.net/problem/1022
 import numpy as np
 print("조건1)r1,c1|r2,c2를 입력할때에는 -3에서 3까지 중의 숫자를 입력하시오")
-print("조건2)r1<r2|c1<c2의 조건을 만족하여야 한다.")
+print("조건2)r1<=r2|c1<=c2의 조건을 만족하여야 한다.")
 A,B=map(int,input("r1,c1을 입력하세요:").split(' '))
 C,D=map(int,input("r2,c2을 입력하세요:").split(' '))
 A+=3
