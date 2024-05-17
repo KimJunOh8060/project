@@ -1,0 +1,33 @@
+#https://www.acmicpc.net/problem/1021
+#upper address is orgin of problem
+import random as r
+L=[]
+S=[]
+print("조건:개수는 난수 한도 보다 작거나 같아야 한다(조건에 따라) ")
+N=int(input("순환 큐의 난수 한도는?: "))
+M=int(input("순환 큐의 개수는?: "))
+
+if N<=50:
+    if M<=N:
+        for i in range(1,M+1):
+            L.append(r.randint(1,N))
+
+        print(f"리스트의 원본:{L}")
+        S = L[0]
+        del(L[0])
+        print(f"리스트의 첫번째 원소 빼내기 {L}")
+        L.append(S)
+        print(f"리스트의 첫번째 원소 끝으로 나열{L}")
+        L.pop()
+        L.insert(0,S) #원상복구
+        L.reverse()
+        S = L[0]
+        L.reverse()
+        L.pop()
+        L.insert(0,S)
+        print(f"리스트의 끝번째 원소를 앞으로 나열{L}")
+    else:
+        print("개수는 난수 한도보다 작아야 한다")
+else:
+    print("조건을 충족하지 않는다")
+print("프로그램을 종료합니다")
