@@ -1,0 +1,23 @@
+#not the complete
+#https://www.acmicpc.net/problem/1013
+#패턴이 규칙적이지 않음
+#(100+1+ | 01)+
+import random as r
+def pt(a,b,c):
+    p=[]
+    s=[a,b,c]
+    p.append(a+b+c)
+    if len(p[-1]) <= 200:
+        s.append(a) and s.append(b) and s.append(c)
+        for i in range(50):
+            r.shuffle(s)
+            p.append(s[0]+s[1]+s[2])
+            s.sort()
+        p=list(set(p))
+        s=[a,b,c]
+        for k in range(50):
+
+    p.sort()
+    return p
+
+print(pt('100','1','01'))
