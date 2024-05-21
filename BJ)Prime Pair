@@ -1,0 +1,62 @@
+#https://www.acmicpc.net/problem/1017
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+L = []  # 최종 결과 리스트
+S = []  # 입력된 리스트
+A = []  # 첫 번째 수와 더해서 소수가 되는 숫자 리스트
+V = []  # 임시 저장 리스트
+
+# 리스트의 크기를 입력받고 리스트 원소들을 입력받음
+N = int(input("리스트의 크기를 입력해주세요: "))
+for _ in range(N):
+    a = int(input("리스트의 원소를 지정해주세요: "))
+    S.append(a)
+
+# 첫 번째 원소와 더해서 소수가 되는 원소를 찾기
+for k in range(1, len(S)):
+    if is_prime(S[0] + S[k]):
+        A.append(S[k])
+print("A:", A)
+
+# 첫 번째 원소를 제거하고 남은 리스트를 G에 백업
+S.remove(S[0])
+G = tuple(S)  # [4, 7, 10, 11, 12]
+
+# A의 각 원소에 대해 처리
+for v in range(len(A)):
+    G = list(G)
+    S = G[:]
+    S.remove(A[v])  # S에서 A의 현재 원소를 제거
+    print("S:", S)
+    print("-----------------")
+
+    # 남은 S의 원소들을 순회하며 소수 쌍을 찾기
+    for j in range(len(S) - 1):
+        for k in range(j + 1, len(S)):
+            if is_prime(S[j] + S[k]):
+                V.append(S[j])
+                V.append(S[k])
+
+                # V의 원소들을 S에서 제거
+                S.remove(V[0])
+                S.remove(V[1])
+                V = []
+
+                # 남은 두 원소가 소수 쌍인지 확인
+                if len(S) == 2 and is_prime(S[0] + S[1]):
+                    L.append(A[v])
+                break
+        if len(V) == 0:  # 소수 쌍을 찾았을 경우 루프 탈출
+            break
+
+# 결과 출력
+if not L:
+    print(-1)
+else:
+    print(L)
