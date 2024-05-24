@@ -1,0 +1,32 @@
+#https://www.acmicpc.net/problem/2839
+N=int(input("총 Kg을 입력해주세요: "))
+FIVE_kg=0
+THREE_kg=0
+change=0
+count=0
+comparsion=0
+SECOND_THREE_KG=0
+#다시 확인하기
+
+if N%3!=0:
+    if N%5==0:
+        FIVE_kg=N/5
+        print(FIVE_kg)
+    elif N%5!=0:
+        FIVE_kg=N/5
+        change=N//5
+        if change%3==0:
+            THREE_kg=change/3
+            print(int(FIVE_kg + THREE_kg))
+        elif change%3!=0:
+            print(-1)
+if N%3==0:
+    SECOND_THREE_KG =N/3
+    if FIVE_kg + THREE_kg > SECOND_THREE_KG:
+        print(int(SECOND_THREE_KG))
+
+
+else:
+    print("조건을 충족하지 않습니다.")
+
+print("프로그램을 종료합니다.")
